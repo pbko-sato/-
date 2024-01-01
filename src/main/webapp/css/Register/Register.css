@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+input[type=radio] {
+	
+}
+
+.notion-text {
+	line-height: 0px;
+	font-size: 12px;
+}
+
+.sex-radio {
+	display: flex;
+	justify-content: center;;
+}
+
+.register-cert-table {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.label {
+	font-weight: 700;
+}
+
+td {
+	padding: 1rem;
+	border: solid 1px;
+}

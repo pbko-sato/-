@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body {
+	width: 100%;
+	height: 100%;
+	background-color: white;
+	justify-content: center;
+	text-align: center;
+	font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro W3", メイリオ, Meiryo, "ＭＳ Ｐゴシック", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+label {
+	font-weight: 700;
+	color: black;
+}
+
+h4 {
+	font-weight: 900;
+	color: red;
+}
+
+.register-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: black;
+  	background: linear-gradient(#5D99FF, #2C7CFF);
+  	width: 10rem;
+}
+
+.register-button:hover {
+	background: linear-gradient(#BAD3FF, #8EB8FF);
+}
+
+.return-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: #222222;
+  	width: 10rem;
+  	background-color: #FFFFEE;
+}
+
+.return-button:hover {
+	background: linear-gradient(#F5F5F5, #F5FFFA);
+}
+
+input[type=text] {
+	padding: 8px 10px;
+  	border: 0.5px solid black;
+  	border-radius: 8px;
+  	font-size: 16px;
+  	box-sizing: border-box;
+}
+
+input:invalid[type=text] {
+	background-color: lightpink;
+}
+
+input[type=password] {
+	padding: 8px 10px;
+  	border: 0.5px solid black;
+  	border-radius: 8px;
+  	font-size: 16px;
+  	box-sizing: border-box;
+}
+
+input[type=email] {
+	padding: 8px 10px;
+  	border: 0.5px solid black;
+  	border-radius: 8px;
+  	font-size: 16px;
+  	box-sizing: border-box;
+}
+
+
+.title {
+	line-height: 0;
+	text-align: left;
+	margin-left: 3rem;
+}
