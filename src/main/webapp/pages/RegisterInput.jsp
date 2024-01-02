@@ -16,6 +16,7 @@
 		</div>
 		<hr>
 		<div>
+			<h4 class="register-input-message">${ registerFailureMessage }</h4>
 			<form action="?" method="post">
 				<div>
 					<input type="text" name="username" placeholder="ユーザ名" pattern="^[a-zA-Z0-9]+$" maxlength="15" value="${ usersBean.name }">			

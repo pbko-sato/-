@@ -167,11 +167,14 @@ public class UsersDAO {
             //SQL準備
             PreparedStatement state = con.prepareStatement(SQL);
         ){
+			// SQLにVALUESをセット
+			state.setString(1, name);
+			state.setString(2, email);
 			// 結果取得
 			ResultSet results = state.executeQuery();
 			
 			// すでに同一ユーザ名または同一メールアドレスのレコードが存在している場合
-			if (results != null) {
+			if (results.getInt(1) > 0) {
 				return false;
 				
 			} else {

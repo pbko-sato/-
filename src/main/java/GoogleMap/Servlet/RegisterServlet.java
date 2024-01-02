@@ -77,6 +77,16 @@ public class RegisterServlet extends HttpServlet {
 				int sex = Integer.parseInt(request.getParameter("sex"));
 				int age = Integer.parseInt(request.getParameter("age"));
 				
+				// 同一レコードのチェック
+				UsersDAO usersDaoInput = new UsersDAO();
+				boolean isInitialRecordInput = usersDaoInput.checkRecords(username, email);
+				if(!isInitialRecordInput) {
+					sessionGoToCert.setAttribute("registerFailureMessage", ErrorMessage.registerFailureMessage);
+					Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+					break;
+					
+				}
+				
 				// 性別・年齢は表示用にStringを作成
 				String sexStr = UsersMethod.displaySex(sex);
 				String ageStr = UsersMethod.displayAge(age);
