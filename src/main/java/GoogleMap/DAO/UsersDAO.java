@@ -27,7 +27,7 @@ public class UsersDAO {
 	// ログイン時の処理
 	public LoginInfo loginAndGetLoginInfo(String username, String password) throws DAOException {
 		// 実行するSQL
-		String SQL = "SELECT id, name, pass FROM users WHERE name = ? AND pass = ?";
+		String SQL = "SELECT usersid, name, pass FROM users WHERE name = ? AND pass = ?";
 		
 		try (
 			// DB接続
@@ -42,13 +42,13 @@ public class UsersDAO {
 			ResultSet results = state.executeQuery();
 			
 			// 結果格納用の変数
-			int gotId = 0;
+			int gotUsersidLogin = 0;
 			String gotName = null;
 			String gotPass = null;
 			
 			// 結果格納
 			while(results.next()) {
-				gotId = results.getInt("id");
+				gotUsersidLogin = results.getInt("usersid");
 				gotName = results.getString("name");
 				gotPass = results.getString("pass");
 			}
@@ -67,7 +67,7 @@ public class UsersDAO {
 			if (username.equals(gotName) && password.equals(gotPass)) {
 				info.setLogin(true);
 				// loginInfo(Map)に情報格納
-				info.setId(gotId);
+				info.setId(gotUsersidLogin);
 				info.setName(username);
 				
 			} else {
@@ -91,7 +91,7 @@ public class UsersDAO {
 	// 新規登録した際の情報取得
 	public LoginInfo getRegisteredLoginInfo() throws DAOException {
 		// 実行するSQL
-		String SQL = "SELECT id, name FROM users WHERE id = (SELECT COUNT(*) FROM users)";
+		String SQL = "SELECT usersid, name FROM users WHERE id = (SELECT COUNT(*) FROM users)";
 		
 		try(
 			//DB接続
@@ -102,12 +102,12 @@ public class UsersDAO {
 			// 結果取得
 			ResultSet results = state.executeQuery();
 			
-			int gotId = 0;
+			int gotUsersidRegister = 0;
 			String gotName = null;
 			
 			// 結果格納
 			while(results.next()) {
-				gotId = results.getInt("id");
+				gotUsersidRegister = results.getInt("usersid");
 				gotName = results.getString("name");				
 			}
 			
@@ -116,7 +116,7 @@ public class UsersDAO {
 			
 			// loginInfo(Map)に情報格納
 			info.setLogin(true);
-			info.setId(gotId);
+			info.setId(gotUsersidRegister);
 			info.setName(gotName);
 			
 			return info;
@@ -171,10 +171,15 @@ public class UsersDAO {
 			state.setString(1, name);
 			state.setString(2, email);
 			// 結果取得
-			ResultSet results = state.executeQuery();
+			ResultSet result = state.executeQuery();
+			int count = 0;
+			
+			while(result.next()) {
+				count = result.getInt("count");
+			}
 			
 			// すでに同一ユーザ名または同一メールアドレスのレコードが存在している場合
-			if (results.getInt(1) > 0) {
+			if (count > 0) {
 				return false;
 				
 			} else {

@@ -1,17 +1,35 @@
 @charset "UTF-8";
 
-input[type=radio] {
-	
-}
-
 .notion-text {
 	line-height: 0px;
 	font-size: 12px;
 }
 
-.sex-radio {
+.input-for-username {
+	margin-bottom: 10px;
+}
+
+.input-for-password {
+	margin-bottom: 10px;
 	display: flex;
-	justify-content: center;;
+	align-items: center;
+	flex-direction: column;
+}
+
+select {
+	width: 5rem;
+}
+
+.sex-pulldown {
+	margin-bottom: 10px;
+}
+
+.age-pulldown {
+	margin-bottom: 10px;
+}
+
+.input-for-email {
+	margin-bottom: 10px;
 }
 
 .register-cert-table {

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -10,13 +11,13 @@
 		<link rel="stylesheet" href="/GoogleMap/css/Register/Register.css">
 	</head>
 	<body>
-		<jsp:include page="./headers/header.jsp"/><br></c:otherwise>
+		<jsp:include page="./headers/header.jsp"/>
 		<div class="title">
 			<h2>新規登録 確認</h2>
 		</div>
 		<hr>
 		<div>
-		<h4 class="register-cert-message">${ registerFailureMessage }</h4>
+		<h4 class="register-cert-message">${ registerCertFailureMessage }</h4>
 			<table class="register-cert-table">
 				<tr class="cert-username">
 					<td class="label">

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,41 +17,29 @@
 		</div>
 		<hr>
 		<div>
-			<h4 class="register-input-message">${ registerFailureMessage }</h4>
+			<h4 class="register-input-message">${ registerInputFailureMessage }</h4>
 			<form action="?" method="post">
-				<div>
-					<input type="text" name="username" placeholder="ユーザ名" pattern="^[a-zA-Z0-9]+$" maxlength="15" value="${ usersBean.name }">			
+				<div class="input-for-username">
+					<input type="text" name="username" placeholder="ユーザ名" pattern="^[a-zA-Z0-9-=^~@;+:*,._]+$" maxlength="15" value="${ usersBean.name }">			
 				</div>
-				<div>
-					<input type="password" name="password" placeholder="パスワード" maxlength="15">	
-				</div>
-				<div>	
+				<div class="input-for-password">
+					<input type="password" name="password" placeholder="パスワード" maxlength="15">		
 					<input type="password" name="passwordCert" placeholder="パスワード(確認用)" maxlength="15">		
-					<p class="notion-text">※ユーザ名・パスワードは、半角英数字15文字以内で入力してください。</p>		
+					<p class="notion-text">※ユーザ名・パスワードは、半角英数字または「-=^~@;+:*,._」15文字以内で入力してください。</p>		
 				</div>
-				<div>
+				<div class="input-for-email">
 					<input type="email" name="email" placeholder="メールアドレス" value="${ usersBean.email }">			
 				</div>
-				<div class="sex-radio"> 
-				<label>性別 :</label>
-					<div>
-						<label>
-							<input type="radio" name="sex" value="1">
-							男性
-						</label>
-					</div>
-					<div>
-						<label>
-							<input type="radio" name="sex" value="2">
-							女性
-						</label>
-					</div>
-					<div>
-						<label>
-							<input type="radio" name="sex" value="3">
-							その他
-						</label>
-					</div>
+				<div class="sex-pulldown"> 
+					<label>
+						性別 :
+					</label>
+					<select name="sex">
+						<option value="0"></option>
+						<option value="1">男性</option>
+						<option value="2">女性</option>
+						<option value="3">その他</option>
+					</select>
 				</div>
 				<div class="age-pulldown"> 
 					<label>
