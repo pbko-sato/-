@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="/GoogleMap/css/Register/Register.css">
 	</head>
 	<body>
-		<jsp:include page="./headers/header.jsp"/>
+		<jsp:include page="/pages/headers/header.jsp"/>
 		<div class="title">
 			<h2>新規登録 入力</h2>
 		</div>

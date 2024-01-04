@@ -52,7 +52,7 @@ public class LoginServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToLogin.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Login.jsp");
+				Common.gotoPage(request, response, "/pages/Login/Login.jsp");
 				break;
 				
 			// Login.jsp 「TOPへ」ボタン押下時
@@ -62,7 +62,7 @@ public class LoginServlet extends HttpServlet {
 				// セッション削除
 				sessionReturnToTop.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top.jsp");
+				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				break;
 				
 				
@@ -95,12 +95,12 @@ public class LoginServlet extends HttpServlet {
 					sessionLogin.removeAttribute("loginFailureMessage");
 					// セッションにログイン情報付加
 					sessionLogin.setAttribute("loginInfo", loginInfo);
-					Common.gotoPage(request, response, "/pages/Top.jsp");
+					Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				
 				// ログイン失敗時
 				} else {
 					sessionLogin.setAttribute("loginFailureMessage", ErrorMessage.loginFailureMessage);
-					Common.gotoPage(request, response, "/pages/Login.jsp");
+					Common.gotoPage(request, response, "/pages/Login/Login.jsp");
 				}
 				break;
 				
@@ -110,7 +110,7 @@ public class LoginServlet extends HttpServlet {
 				// 既存のセッション取得
 				HttpSession sessionLogout = request.getSession(false);
 				sessionLogout.invalidate();
-				Common.gotoPage(request, response, "/pages/Top.jsp");
+				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				break;
 
 			default:

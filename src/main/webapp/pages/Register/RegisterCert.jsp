@@ -11,7 +11,7 @@
 		<link rel="stylesheet" href="/GoogleMap/css/Register/Register.css">
 	</head>
 	<body>
-		<jsp:include page="./headers/header.jsp"/>
+		<jsp:include page="/pages/headers/header.jsp"/>
 		<div class="title">
 			<h2>新規登録 確認</h2>
 		</div>
@@ -54,7 +54,7 @@
 			</table>
 		</div>
 		<div>
-			<form action="/GoogleMap/RegisterServlet" method="post">
+			<form action="?" method="post">
 				<button type="submit" class="return-button" formaction="/GoogleMap/RegisterServlet" name="action" value="ReturnToInput">戻る</button>
 				<button type="submit" class="register-button" formaction="/GoogleMap/RegisterServlet" name="action" value="ExecuteRegister">登録する</button>
 			</form>

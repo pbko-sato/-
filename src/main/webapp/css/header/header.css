@@ -46,8 +46,9 @@ nav {
 	margin: 0 0 0 auto;
 }
 
-input[type=submit] {
-	outline: none;
-	border: none;
-	background: transparent;
+.display-id-and-name {
+	position: fixed;
+	top: 1rem;
+	right: 1rem;
+	font-size: 8px;
 }

@@ -91,7 +91,7 @@ public class UsersDAO {
 	// 新規登録した際の情報取得
 	public LoginInfo getRegisteredLoginInfo() throws DAOException {
 		// 実行するSQL
-		String SQL = "SELECT usersid, name FROM users WHERE id = (SELECT COUNT(*) FROM users)";
+		String SQL = "SELECT usersid, name FROM users WHERE usersid = (SELECT COUNT(*) FROM users)";
 		
 		try(
 			//DB接続

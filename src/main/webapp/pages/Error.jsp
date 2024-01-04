@@ -9,12 +9,12 @@
 		<link rel="stylesheet" href="/GoogleMap/css/main.css">
 	</head>
 	<body>
-		<jsp:include page="./headers/header.jsp"/>
+		<jsp:include page="/pages/headers/header.jsp"/>
 		<div class="title">
 			<h2>エラー</h2>
 		</div>
 		<hr>
 		<p>エラーが発生しました。</p>
-		<p><a href="/GoogleMap/pages/Top.jsp">こちら</a> からTOPへ戻ってください。</p>
+		<p><a href="/GoogleMap/pages/Top/Top.jsp">こちら</a> からTOPへ戻ってください。</p>
 	</body>
 </html>

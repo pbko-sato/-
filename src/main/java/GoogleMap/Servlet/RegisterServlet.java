@@ -52,7 +52,7 @@ public class RegisterServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToRegister.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 				break;
 			
 			// RegisterInput.jsp 「TOPへ」ボタン押下時
@@ -62,7 +62,7 @@ public class RegisterServlet extends HttpServlet {
 				// セッション削除
 				sessionReturnToTop.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top.jsp");
+				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				break;
 				
 			// RegisterInput.jsp 「確認する」ボタン押下時
@@ -87,7 +87,7 @@ public class RegisterServlet extends HttpServlet {
 					Integer.parseInt(sex) == 0 || Integer.parseInt(age) == 0) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncompleteInputs);
 					sessionGoToCert.setAttribute("usersBean", usersBean);
-					Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 					
 				}
@@ -96,7 +96,7 @@ public class RegisterServlet extends HttpServlet {
 				if(!pass.equals(passCert)) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncorrectPassword);
 					sessionGoToCert.setAttribute("usersBean", usersBean);
-					Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 				}
 				
@@ -105,7 +105,7 @@ public class RegisterServlet extends HttpServlet {
 				boolean isInitialRecordInput = usersDaoInput.checkRecords(username, email);
 				if(!isInitialRecordInput) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerFailureMessage);
-					Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 					
 				}
@@ -120,7 +120,7 @@ public class RegisterServlet extends HttpServlet {
 				// 同一レコードのメッセージ削除
 				sessionGoToCert.removeAttribute("registerInputFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/RegisterCert.jsp");
+				Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 				break;
 			
 			// RegisterCert.jsp 「戻る」ボタン押下時
@@ -130,7 +130,7 @@ public class RegisterServlet extends HttpServlet {
 				// 同一レコードのメッセージ削除
 				sessionReturnToInput.removeAttribute("registerCertFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/RegisterInput.jsp");
+				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 				break;
 				
 			// RegisterCert.jsp 「登録する」ボタン押下時
@@ -145,20 +145,17 @@ public class RegisterServlet extends HttpServlet {
 				boolean isInitialRecord = usersDao.checkRecords(execUsersBean.getName(), execUsersBean.getEmail());
 				if(!isInitialRecord) {
 					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerFailureMessage);
-					Common.gotoPage(request, response, "/pages/RegisterCert.jsp");
+					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 					break;
 					
 				}
 				
 				// nullチェック
 				UsersBean usersBeanExec = (UsersBean)sessionExecuteRegister.getAttribute("usersBean");
-				String sexStrExec = request.getParameter("sexStr");
-				String ageStrExec = request.getParameter("ageStr");
-				if(usersBeanExec.getName() == null || usersBeanExec.getEmail() == null ||
-					sexStrExec == null || ageStrExec == null ||
-					sexStrExec.length() < 2 || ageStrExec.length() < 3) {
+				if(usersBeanExec.getName() == null || usersBeanExec.getPass() == null || usersBeanExec.getEmail() == null ||
+					usersBeanExec.getSex() == 0 || usersBeanExec.getAge() == 0) {
 					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerIncompleteInputs);
-					Common.gotoPage(request, response, "/pages/RegisterCert.jsp");
+					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 					break;
 					
 				}
@@ -187,7 +184,7 @@ public class RegisterServlet extends HttpServlet {
 				sessionExecuteRegister.setAttribute("loginInfo", usersDao.getRegisteredLoginInfo());
 				
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top.jsp");
+				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				
 			}
 		} catch (Exception e) {

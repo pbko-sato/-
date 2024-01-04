@@ -9,7 +9,7 @@
 		<link rel="stylesheet" href="/GoogleMap/css/main.css">
 	</head>
 	<body>
-		<jsp:include page="./headers/header.jsp"/>
+		<jsp:include page="/pages/headers/header.jsp"/>
 		<div class="title">
 			<h2>ログイン</h2>
 		</div>
@@ -28,7 +28,7 @@
 			</form>		
 		</div>
 		<div>
-			<p>会員登録は <a href="/GoogleMap/pages/RegisterInput.jsp">こちら</a></p>
+			<p>会員登録は <a href="/GoogleMap/RegisterServlet?action=TransitToRegister">こちら</a></p>
 		</div>
 	</body>
 </html>
