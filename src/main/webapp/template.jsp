@@ -13,9 +13,9 @@
 	<body>
 		<c:choose>
 			<c:when test="${loginInfo.isLogin() eq true}">
-				<jsp:include page="./headers/loggedHeader.jsp"/><br></c:when>
+				<jsp:include page="/pages/headers/headers/loggedHeader.jsp"/><br></c:when>
 			<c:otherwise>
-				<jsp:include page="./headers/header.jsp"/><br></c:otherwise>
+				<jsp:include page="/pages/headers/headers/header.jsp"/><br></c:otherwise>
 		</c:choose>
 		<div class="title">
 			<h2></h2>

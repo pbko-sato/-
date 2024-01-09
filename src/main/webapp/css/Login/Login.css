@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+.login-button{
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: black;
+  	width: 10rem;
+  	background: linear-gradient(#FFCC00, #FFCC33);
+}
+
+.login-button:hover{
+  	background: linear-gradient(#FFCC99, #FFCC66);	
+}

@@ -45,16 +45,6 @@ public class LoginServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			
 			switch(action) {
-			// header.jsp 「ログイン」リンク押下時
-			case "TransitToLogin":
-				// 既存のセッション取得
-				HttpSession sessionTransitToLogin = request.getSession(false);
-				// セッション削除
-				sessionTransitToLogin.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Login/Login.jsp");
-				break;
-				
 			// Login.jsp 「TOPへ」ボタン押下時
 			case "returnToTop":
 				// 既存のセッション取得
@@ -102,15 +92,6 @@ public class LoginServlet extends HttpServlet {
 					sessionLogin.setAttribute("loginFailureMessage", ErrorMessage.loginFailureMessage);
 					Common.gotoPage(request, response, "/pages/Login/Login.jsp");
 				}
-				break;
-				
-				
-			// loggedHeader.jsp 「ログアウト」リンク押下時
-			case "Logout":
-				// 既存のセッション取得
-				HttpSession sessionLogout = request.getSession(false);
-				sessionLogout.invalidate();
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
 				break;
 
 			default:

@@ -46,3 +46,17 @@ td {
 	padding: 1rem;
 	border: solid 1px;
 }
+
+.register-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: black;
+  	background: linear-gradient(#5D99FF, #2C7CFF);
+  	width: 10rem;
+}
+
+.register-button:hover {
+	background: linear-gradient(#BAD3FF, #8EB8FF);
+}

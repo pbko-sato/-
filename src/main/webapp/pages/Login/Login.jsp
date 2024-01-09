@@ -7,6 +7,7 @@
 		<title>ログイン</title>
 		<link rel="stylesheet" href="/GoogleMap/css/header/header.css">
 		<link rel="stylesheet" href="/GoogleMap/css/main.css">
+		<link rel="stylesheet" href="/GoogleMap/css/Login/Login.css">
 	</head>
 	<body>
 		<jsp:include page="/pages/headers/header.jsp"/>
@@ -24,7 +25,7 @@
 					<input type="password" name="password" placeholder="パスワード">				
 				</div>
 				<button type="submit" class="return-button" formaction="/GoogleMap/LoginServlet" name="action" value="returnToTop">TOPへ</button>
-				<button type="submit" class="register-button" formaction="/GoogleMap/LoginServlet" name="action" value="Login">ログインする</button>
+				<button type="submit" class="login-button" formaction="/GoogleMap/LoginServlet" name="action" value="Login">ログインする</button>
 			</form>		
 		</div>
 		<div>

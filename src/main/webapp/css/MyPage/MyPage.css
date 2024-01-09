@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+.renew-and-resign {
+	margin: 0 0 0 auto;;
+}
+
+.mypage-footer-ul {
+	list-style: none;
+	display: flex;
+	justify-content: flex-end;
+	margin: 0;
+}
+
+.mypage-footer-li {
+	margin-right: 2rem;
+	font-size: 16px;
+	font-weight: 600;
+}
+
+.mypage-footer-link {
+	text-decoration: none;
+	color: #005FFF;
+}

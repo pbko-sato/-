@@ -44,17 +44,7 @@ public class RegisterServlet extends HttpServlet {
 		try {
 			String action = request.getParameter("action");
 			
-			switch(action) {
-			// header.jsp 「新規登録」リンク押下時
-			case "TransitToRegister":
-				// 既存のセッション取得
-				HttpSession sessionTransitToRegister = request.getSession(false);
-				// セッション削除
-				sessionTransitToRegister.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
-				break;
-			
+			switch(action) {			
 			// RegisterInput.jsp 「TOPへ」ボタン押下時
 			case "ReturnToTop":
 				// 既存のセッション取得
@@ -111,8 +101,8 @@ public class RegisterServlet extends HttpServlet {
 				}
 				
 				// 性別・年齢は表示用にStringを作成
-				String sexStr = UsersMethod.displaySex(Integer.parseInt(sex));
-				String ageStr = UsersMethod.displayAge(Integer.parseInt(age));
+				String sexStr = Common.displaySex(Integer.parseInt(sex));
+				String ageStr = Common.displayAge(Integer.parseInt(age));
 				
 				// 性別・年齢の文字列をセッションに格納
 				sessionGoToCert.setAttribute("sexStr", sexStr);
@@ -192,61 +182,4 @@ public class RegisterServlet extends HttpServlet {
 		}
 	}
 
-}
-
-class UsersMethod {
-	// 性別の表示
-	public static String displaySex(int sex) {
-		String sexStr = null;
-		
-		switch(sex) {
-		case 1:
-			sexStr = "男性";
-			break;
-		case 2:
-			sexStr = "女性";
-			break;
-		case 3:
-			sexStr = "その他";
-			break;
-		default:
-			break;
-		}
-		return sexStr;
-	}
-	
-	// 年齢の表示
-	public static String displayAge(int age) {
-		String ageStr = null;
-		
-		switch(age) {
-		case 0:
-			ageStr = "年齢が洗濯されていません";
-			break;
-		case 10:
-			ageStr = "10代以下";
-			break;
-		case 20:
-			ageStr = "20代";
-			break;
-		case 30:
-			ageStr = "30代";
-			break;
-		case 40:
-			ageStr = "40代";
-			break;
-		case 50:
-			ageStr = "50代";
-			break;
-		case 60:
-			ageStr = "60代";
-			break;
-		case 70:
-			ageStr = "70代以上";
-			break;
-		default:
-			break;
-		}
-		return ageStr;
-	}
 }
