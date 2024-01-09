@@ -32,19 +32,49 @@ select {
 	margin-bottom: 10px;
 }
 
-.register-cert-table {
+.register-input-table {
+	border: 0px none;
 	border-collapse: collapse;
 	margin-left: auto;
 	margin-right: auto;
 }
 
-.label {
-	font-weight: 700;
+.register-table-labels {
+	text-align: right;
 }
 
-td {
-	padding: 1rem;
+.register-td-age {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.register-td-birthday {
+	display: flex;
+	justify-content: flex-start;
+}
+
+.birthday-pulldown-label {
+	margin-right: 5px;
+}
+
+.register-cert-table {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
 	border: solid 1px;
+}
+
+.cert-table-tr {
+	border: solid 1px;
+}
+
+.cert-table-td {
+	border: solid 1px;
+	padding: 1rem;
+}
+
+.register-pulldown-label {
+	font-weight: 700;
 }
 
 .register-button {

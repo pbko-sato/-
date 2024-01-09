@@ -30,32 +30,76 @@
 				<div class="input-for-email">
 					<input type="email" name="email" placeholder="メールアドレス" value="${ usersBean.email }">			
 				</div>
-				<div class="sex-pulldown"> 
-					<label>
-						性別 :
-					</label>
-					<select name="sex">
-						<option value="0"></option>
-						<option value="1">男性</option>
-						<option value="2">女性</option>
-						<option value="3">その他</option>
-					</select>
-				</div>
-				<div class="age-pulldown"> 
-					<label>
-						年齢 :
-					</label>
-					<select name="age">
-						<option value="0"></option>
-						<option value="10">10代以下</option>
-						<option value="20">20代</option>
-						<option value="30">30代</option>
-						<option value="40">40代</option>
-						<option value="50">50代</option>
-						<option value="60">60代</option>
-						<option value="70">70代以上</option>
-					</select>
-				</div>
+				<table class="register-input-table">
+					<tbody>
+						<tr class="input-table-tr">
+							<td class="input-table-td register-table-labels">
+								<label class="register-pulldown-label">
+									性別 :
+								</label>
+							</td>
+							<td class="input-table-td">
+								<div class="register-td-age">
+									<select name="sex">
+										<option value="0"></option>
+										<option value="1">男性</option>
+										<option value="2">女性</option>
+										<option value="3">その他</option>
+									</select>
+								</div>
+							</td>
+						</tr>
+						<tr class="input-table-tr">
+							<td class="input-table-td register-table-labels">
+								<label class="register-pulldown-label">
+									生年月日 :
+								</label>
+							</td>
+							<td class="input-table-td">
+								<div class="register-td-birthday">
+									<div class="year-pulldown">
+										<select name="year">
+											<option value="0"></option>
+											<c:forEach var="h" begin="1924" end="1990" step="1">
+												<option value="${ h }">${ h }</option>
+											</c:forEach>
+											<option value="0" selected></option>
+											<c:forEach var="h" begin="1991" end="2024" step="1">
+												<option value="${ h }">${ h }</option>
+											</c:forEach>
+										</select>
+										<label class="birthday-pulldown-label">
+											年 
+										</label>
+									</div>
+									<div class="month-pulldown">
+										<select name="month">
+											<option value="0"></option>
+											<c:forEach var="i" begin="1" end="12" step="1">
+												<option value="${ i }">${ i }</option>
+											</c:forEach>
+										</select>
+										<label class="birthday-pulldown-label">
+											月 
+										</label>
+									</div>
+									<div class="date-pulldown">
+										<select name="date">
+											<option value="0"></option>
+											<c:forEach var="j" begin="1" end="31" step="1">
+												<option value="${ j }">${ j }</option>
+											</c:forEach>
+										</select>
+										<label class="birthday-pulldown-label">
+											日
+										</label>
+									</div>
+								</div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="notion-text">※性別・生年月日は登録後の変更ができません。</p>	
 				<button type="submit" class="return-button" formaction="/GoogleMap/RegisterServlet" name="action" value="ReturnToTop">TOPへ</button>
 				<button type="submit" class="register-button" formaction="/GoogleMap/RegisterServlet" name="action" value="GoToCert">確認する</button>
 			</form>		

@@ -8,25 +8,25 @@ public class UsersBean implements Serializable {
 	private String pass;
 	private String email;
 	private int sex;
-	private int age;
+	private String birthday;
 	
 	//constructor
-	public UsersBean(int id, String name, String pass, String email, int sex, int age) {
+	public UsersBean(int id, String name, String pass, String email, int sex, String birthday) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.pass = pass;
 		this.email = email;
 		this.sex = sex;
-		this.age = age;
+		this.birthday = birthday;
 	}
 	// 登録時の確認用にid以外を格納
-	public UsersBean(String name, String pass, String email, int sex, int age) {
+	public UsersBean(String name, String pass, String email, int sex, String birthday) {
 		this.name = name;
 		this.pass = pass;
 		this.email = email;
 		this.sex = sex;
-		this.age = age;
+		this.birthday = birthday;
 	}
 
 	// getters
@@ -45,8 +45,8 @@ public class UsersBean implements Serializable {
 	public int getSex() {
 		return sex;
 	}
-	public int getAge() {
-		return age;
+	public String getBirthday() {
+		return birthday;
 	}
 	
 	// setters
@@ -65,7 +65,7 @@ public class UsersBean implements Serializable {
 	public void setSex(int sex) {
 		this.sex = sex;
 	}
-	public void setAge(int age) {
-		this.age = age;
+	public void setBirthday(String birthday) {
+		this.birthday = birthday;
 	}
 }

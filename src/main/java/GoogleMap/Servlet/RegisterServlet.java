@@ -65,18 +65,22 @@ public class RegisterServlet extends HttpServlet {
 				String passCert = request.getParameter("passwordCert");
 				String email = request.getParameter("email");
 				String sex = request.getParameter("sex");
-				String age = request.getParameter("age");
 				
-				// UsersBeanに情報格納(バリデーション用)
-				UsersBean usersBean = new UsersBean(username, pass, email, Integer.parseInt(sex), Integer.parseInt(age));
-				sessionGoToCert.setAttribute("usersBean", usersBean);
+				String year = request.getParameter("year");
+				String gotMonth = request.getParameter("month");
+				String gotDate = request.getParameter("date");
+				
+				// UsersBeanに情報格納(バリデーションに引っかかった時用)
+				UsersBean tmpUsersBean = new UsersBean(username, pass, email, Integer.parseInt(sex), Common.formatBirthday(year, gotMonth, gotDate));
 				
 				// nullチェック
-				if(username == null || pass == null || passCert == null || email == null || sex == null || age == null ||
+				if(username == null || pass == null || passCert == null || email == null || sex == null ||
+					year == null || gotMonth == null || gotDate == null ||
 					username.length() == 0 || pass.length() == 0 || passCert.length() == 0 || email.length() == 0 ||
-					Integer.parseInt(sex) == 0 || Integer.parseInt(age) == 0) {
+					Integer.parseInt(sex) == 0 || year.length() == 0 || gotMonth.length() == 0 || gotDate.length() == 0 ||
+					tmpUsersBean.getBirthday().length() != 8) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncompleteInputs);
-					sessionGoToCert.setAttribute("usersBean", usersBean);
+					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
 					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 					
@@ -85,7 +89,7 @@ public class RegisterServlet extends HttpServlet {
 				// パスワードチェック
 				if(!pass.equals(passCert)) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncorrectPassword);
-					sessionGoToCert.setAttribute("usersBean", usersBean);
+					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
 					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 				}
@@ -100,13 +104,14 @@ public class RegisterServlet extends HttpServlet {
 					
 				}
 				
-				// 性別・年齢は表示用にStringを作成
+				// 性別は表示用にStringを作成
 				String sexStr = Common.displaySex(Integer.parseInt(sex));
-				String ageStr = Common.displayAge(Integer.parseInt(age));
 				
-				// 性別・年齢の文字列をセッションに格納
+				// 正式にusersBean、性別・生年月日の文字列をセッションに格納
+				sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
 				sessionGoToCert.setAttribute("sexStr", sexStr);
-				sessionGoToCert.setAttribute("ageStr", ageStr);
+				sessionGoToCert.setAttribute("birthdayStr", Common.displayBirthday(tmpUsersBean.getBirthday()));
+				
 				// 同一レコードのメッセージ削除
 				sessionGoToCert.removeAttribute("registerInputFailureMessage");
 				// 画面遷移
@@ -143,7 +148,7 @@ public class RegisterServlet extends HttpServlet {
 				// nullチェック
 				UsersBean usersBeanExec = (UsersBean)sessionExecuteRegister.getAttribute("usersBean");
 				if(usersBeanExec.getName() == null || usersBeanExec.getPass() == null || usersBeanExec.getEmail() == null ||
-					usersBeanExec.getSex() == 0 || usersBeanExec.getAge() == 0) {
+					usersBeanExec.getSex() == 0 || usersBeanExec.getBirthday() == null) {
 					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerIncompleteInputs);
 					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 					break;
@@ -163,12 +168,12 @@ public class RegisterServlet extends HttpServlet {
 				}
 				
 				// 登録実行(パスワードはハッシュ化)
-				usersDao.register(execUsersBean.getName(), password, execUsersBean.getEmail(), execUsersBean.getSex(), execUsersBean.getAge());
+				usersDao.register(execUsersBean.getName(), password, execUsersBean.getEmail(), execUsersBean.getSex(), execUsersBean.getBirthday());
 				
 				// セッションのAttribute削除
 				sessionExecuteRegister.removeAttribute("usersBean");
 				sessionExecuteRegister.removeAttribute("sexStr");
-				sessionExecuteRegister.removeAttribute("ageStr");
+				sessionExecuteRegister.removeAttribute("birthdayStr");
 				sessionExecuteRegister.removeAttribute("registerCertFailureMessage");
 				// ログイン情報を取得・ログイン情報のAttribute付加
 				sessionExecuteRegister.setAttribute("loginInfo", usersDao.getRegisteredLoginInfo());

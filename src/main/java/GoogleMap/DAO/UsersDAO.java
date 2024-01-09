@@ -130,9 +130,9 @@ public class UsersDAO {
 	
 	// RegisterCert.jsp
 	// 新規登録時の処理
-	public void register(String name, String password, String email, int sex, int age) throws DAOException{
+	public void register(String name, String password, String email, int sex, String birthday) throws DAOException{
 		// 実行するSQL
-		String SQL = "INSERT INTO users(name, pass, email, sex, age) VALUES (?, ?, ?, ?, ?)";
+		String SQL = "INSERT INTO users(name, pass, email, sex, birthday) VALUES (?, ?, ?, ?, ?)";
 		
 		try(
 			//DB接続
@@ -145,7 +145,7 @@ public class UsersDAO {
 			state.setString(2, password);
 			state.setString(3, email);
 			state.setInt(4, sex);
-			state.setInt(5, age);
+			state.setString(5, birthday);
 			
 			// 更新実行
 			state.executeUpdate();
