@@ -1,9 +1,9 @@
 <%@ page pageEncoding="UTF-8" %>
 <header class="header">
-	<h1 class="header-title"><a class="header-link" href="/GoogleMap/pages/Top/Top.jsp">社内食べログ</a></h1>
+	<h1 class="header-title"><a class="header-link" href="/GoogleMap/HeaderServlet?action=TransitToTop">社内食べログ</a></h1>
 	<nav class="nav">
 		<div class="display-id-and-name">
-			${loginInfo.getId()}. ${loginInfo.getName()}さん
+			${loginInfo.getUsersid()}. ${loginInfo.getName()}さん
 		</div>
 		<ul class="header-ul">
 			<li class="header-li"><a class="header-link" href="/GoogleMap/HeaderServlet?action=TransitToMyPage">マイページ</a></li>

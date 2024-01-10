@@ -4,20 +4,20 @@ import java.io.Serializable;
 
 public class LoginInfo implements Serializable{
 	private boolean isLogin;
-	private int id;
+	private int usersid;
 	private String name;
 	
 	// constructor
 	public LoginInfo(boolean isLogin, int id, String name) {
 		this.isLogin = isLogin;
-		this.id = id;
+		this.usersid = id;
 		this.name = name;
 	}
 	public LoginInfo() {}
 	
 	// getters
-	public int getId() {
-		return id;
+	public int getUsersid() {
+		return usersid;
 	}
 	public String getName() {
 		return name;
@@ -27,8 +27,8 @@ public class LoginInfo implements Serializable{
 	}
 
 	// setters
-	public void setId(int id) {
-		this.id = id;
+	public void setUsersid(int id) {
+		this.usersid = id;
 	}
 	public void setName(String name) {
 		this.name = name;

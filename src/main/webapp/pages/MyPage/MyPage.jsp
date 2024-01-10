@@ -6,20 +6,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title></title>
+		<title>>${loginInfo.getName()}さんのマイページ</title>
 		<link rel="stylesheet" href="/GoogleMap/css/header/header.css">
 		<link rel="stylesheet" href="/GoogleMap/css/main.css">
 		<link rel="stylesheet" href="/GoogleMap/css/MyPage/MyPage.css">
 	</head>
 	<body>
-		<c:choose>
-			<c:when test="${loginInfo.isLogin() eq true}">
-				<jsp:include page="/pages/headers/loggedHeader.jsp"/><br></c:when>
-			<c:otherwise>
-				<jsp:include page="/pages/headers/header.jsp"/><br></c:otherwise>
-		</c:choose>
+		<jsp:include page="/pages/headers/loggedHeader.jsp"/>
 		<div class="title">
-			<h2>${loginInfo.getId()}. ${loginInfo.getName()}さんのマイページ</h2>
+			<h2>${loginInfo.getName()}さんのマイページ</h2>
 		</div>
 		<hr>
 		<hr>

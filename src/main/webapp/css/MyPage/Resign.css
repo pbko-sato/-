@@ -1,0 +1,46 @@
+@charset "UTF-8";
+
+.resign-notion-text {
+	width: 50%;
+	text-align: center;
+	margin: 0 auto;
+}
+
+.resign-h3 {
+	font-weight: 900;
+	text-align: center;
+}
+
+.resign-ul {
+	margin: 0;
+	list-style: none;
+	text-align: left;
+}
+
+.resign-li {
+	font-size: 14px;
+	font-weight: 400;
+}
+
+.resign-cert-checkbox {
+	display: flex;
+	justify-content: center;
+}
+
+.resign-side-by-checkbox {
+	font-weight: 600;
+}
+
+.resign-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: #FFDBC9;
+  	width: 10rem;
+	background: linear-gradient(#FF0033, #FF0000);
+}
+
+.resign-button:hover {
+	background: linear-gradient(#FF0099, #FF0066);
+}

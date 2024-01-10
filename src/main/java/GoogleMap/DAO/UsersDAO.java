@@ -67,7 +67,7 @@ public class UsersDAO {
 			if (username.equals(gotName) && password.equals(gotPass)) {
 				info.setLogin(true);
 				// loginInfo(Map)に情報格納
-				info.setId(gotUsersidLogin);
+				info.setUsersid(gotUsersidLogin);
 				info.setName(username);
 				
 			} else {
@@ -116,7 +116,7 @@ public class UsersDAO {
 			
 			// loginInfo(Map)に情報格納
 			info.setLogin(true);
-			info.setId(gotUsersidRegister);
+			info.setUsersid(gotUsersidRegister);
 			info.setName(gotName);
 			
 			return info;
@@ -155,7 +155,7 @@ public class UsersDAO {
 		}
 	}
 	
-	// RegisterCert.jsp
+	// RegisterInput.jsp/RegisterCert.jsp
 	// 複数回の同一レコード登録防止用
 	public boolean checkRecords(String name, String email) throws DAOException {
 		// 実行するSQL
@@ -190,6 +190,28 @@ public class UsersDAO {
 			e.printStackTrace();
 		}
 		return false;
+	}
+	
+	// ResignCert.jsp
+	// 退会処理
+	public void deleteUser(int id) throws DAOException {
+		// 実行するSQL
+		String SQL = "DELETE FROM users WHERE usersid = ?";
+		
+		try(
+			//DB接続
+            Connection con = DriverManager.getConnection(url, user, pass);
+            //SQL準備
+            PreparedStatement state = con.prepareStatement(SQL);
+        ){
+			// SQLに主キーの条件をセット
+			state.setInt(1, id);
+			// 削除実行
+			state.executeUpdate();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 	}
 	
 }

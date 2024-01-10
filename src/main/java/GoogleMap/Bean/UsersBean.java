@@ -3,7 +3,7 @@ package GoogleMap.Bean;
 import java.io.Serializable;
 
 public class UsersBean implements Serializable {
-	private int id;
+	private int usersid;
 	private String name;
 	private String pass;
 	private String email;
@@ -13,7 +13,7 @@ public class UsersBean implements Serializable {
 	//constructor
 	public UsersBean(int id, String name, String pass, String email, int sex, String birthday) {
 		super();
-		this.id = id;
+		this.usersid = id;
 		this.name = name;
 		this.pass = pass;
 		this.email = email;
@@ -30,8 +30,8 @@ public class UsersBean implements Serializable {
 	}
 
 	// getters
-	public int getId() {
-		return id;
+	public int getUsersid() {
+		return usersid;
 	}
 	public String getName() {
 		return name;
@@ -50,8 +50,8 @@ public class UsersBean implements Serializable {
 	}
 	
 	// setters
-	public void setId(int id) {
-		this.id = id;
+	public void setUsersid(int id) {
+		this.usersid = id;
 	}
 	public void setName(String name) {
 		this.name = name;

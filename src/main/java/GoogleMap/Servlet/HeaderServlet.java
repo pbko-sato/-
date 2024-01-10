@@ -32,6 +32,12 @@ public class HeaderServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			
 			switch(action) {
+			// header.jsp/loggedHeader.jsp 「社内食べログ」リンク押下時
+			case "TransitToTop":
+				// 画面遷移
+				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				break;
+			
 			// header.jsp 「ログイン」リンク押下時
 			case "TransitToLogin":
 				// 既存のセッション取得
