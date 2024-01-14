@@ -30,7 +30,7 @@
 			<input type="checkbox" name="resign-agreement" value="agree">
 			<p class="resign-side-by-checkbox">上記事項を確認し、退会します。</p>
 		</div>
-		<button type="submit" class="return-button" formaction="/GoogleMap/MyPageServlet" name="action" value="ReturnToMyPageFromResignCert">マイページへ</button>
+		<button type="submit" class="return-button" formaction="/GoogleMap/MyPageServlet" name="action" value="ReturnToMyPage">マイページへ</button>
 		<button type="submit" class="resign-button" formaction="/GoogleMap/MyPageServlet" name="action" value="Resign">退会する</button>
 		</form>
 	</body>

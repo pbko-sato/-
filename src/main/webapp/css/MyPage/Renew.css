@@ -1,0 +1,72 @@
+@charset "UTF-8";
+@charset "UTF-8";
+
+.notion-text {
+	line-height: 0px;
+	font-size: 12px;
+}
+
+.input-for-username {
+	margin-bottom: 10px;
+}
+
+.input-for-password {
+	margin-bottom: 10px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+}
+
+.input-for-email {
+	margin-bottom: 10px;
+}
+
+.renew-input-table {
+	border: 0px none;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.renew-table-labels {
+	text-align: right;
+}
+
+.renew-td-sex {
+	text-align: left;
+	margin-left: 1rem;
+}
+.renew-td-birthday {
+	text-align: left;
+	margin-left: 1rem;
+}
+
+.renew-cert-table {
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
+	border: solid 1px;
+}
+
+.cert-table-tr {
+	border: solid 1px;
+}
+
+.cert-table-td {
+	border: solid 1px;
+	padding: 1rem;
+}
+
+.renew-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: black;
+  	background: linear-gradient(#33CC99, #00CC99);
+  	width: 10rem;
+}
+
+.renew-button:hover {
+	background: linear-gradient(#99CC99, #66CC99);
+}

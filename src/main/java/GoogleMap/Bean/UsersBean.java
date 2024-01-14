@@ -28,6 +28,13 @@ public class UsersBean implements Serializable {
 		this.sex = sex;
 		this.birthday = birthday;
 	}
+	// 会員情報更新時、ユーザ名・パスワード・メールアドレスのみのオブジェクト作成
+	public UsersBean(String name, String pass, String email) {
+		this.name = name;
+		this.pass = pass;
+		this.email = email;
+	}
+	public UsersBean() {}
 
 	// getters
 	public int getUsersid() {

@@ -6,7 +6,7 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>>${loginInfo.getName()}さんのマイページ</title>
+		<title>${loginInfo.getName()}さんのマイページ</title>
 		<link rel="stylesheet" href="/GoogleMap/css/header/header.css">
 		<link rel="stylesheet" href="/GoogleMap/css/main.css">
 		<link rel="stylesheet" href="/GoogleMap/css/MyPage/MyPage.css">

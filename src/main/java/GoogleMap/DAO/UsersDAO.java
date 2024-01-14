@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import GoogleMap.Bean.LoginInfo;
+import GoogleMap.Bean.UsersBean;
 
 public class UsersDAO {
 	private String url = "jdbc:postgresql:googlemap";
@@ -91,7 +92,7 @@ public class UsersDAO {
 	// 新規登録した際の情報取得
 	public LoginInfo getRegisteredLoginInfo() throws DAOException {
 		// 実行するSQL
-		String SQL = "SELECT usersid, name FROM users WHERE usersid = (SELECT COUNT(*) FROM users)";
+		String SQL = "SELECT usersid, name FROM users WHERE usersid = (SELECT MAX(usersid) FROM users)";
 		
 		try(
 			//DB接続
@@ -214,6 +215,108 @@ public class UsersDAO {
 		}
 	}
 	
+	
+	// MyPage.jsp 
+	// 会員情報更新用に会員情報取得
+	public UsersBean getUsersInfo(int id) throws DAOException {
+		// 実行するSQL
+		String SQL = "SELECT * FROM users WHERE usersid = ?";
+		
+		try(
+			//DB接続
+            Connection con = DriverManager.getConnection(url, user, pass);
+            //SQL準備
+            PreparedStatement state = con.prepareStatement(SQL);
+        ){
+			// SQLにVALUESをセット
+			state.setInt(1, id);
+			// 結果取得
+			ResultSet results = state.executeQuery();
+			
+			// 結果格納
+			UsersBean bean = new UsersBean();
+			bean.setUsersid(id);
+			while(results.next()) {
+				bean.setName(results.getString("name"));
+				bean.setPass(results.getString("pass"));
+				bean.setEmail(results.getString("email"));
+				bean.setSex(results.getInt("sex"));
+				bean.setBirthday(results.getString("birthday"));
+			}
+			
+			return bean;
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	
+	// 会員情報更新で複数回の同一レコード登録防止用
+	public boolean checkRecordsForRenew(int id, String name, String email) throws DAOException {
+		// 実行するSQL
+		String SQL = "SELECT COUNT(*) FROM users WHERE (name = ? OR email = ?) AND NOT usersid = ?";
+		
+		try(
+			//DB接続
+            Connection con = DriverManager.getConnection(url, user, pass);
+            //SQL準備
+            PreparedStatement state = con.prepareStatement(SQL);
+        ){
+			// SQLにVALUESをセット
+			state.setString(1, name);
+			state.setString(2, email);
+			state.setInt(3, id);
+			// 結果取得
+			ResultSet result = state.executeQuery();
+			int count = 0;
+			
+			while(result.next()) {
+				count = result.getInt("count");
+			}
+			
+			// すでに同一ユーザ名または同一メールアドレスのレコードが存在している場合
+			if (count > 0) {
+				return false;
+				
+			} else {
+				return true;
+			}
+			
+		} catch(SQLException e) {
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
+	// RenewCert.jsp
+	// 会員情報更新処理
+	public void renew(int id, String username, String password, String email) throws DAOException {
+		// 実行するSQl
+		String SQL = "UPDATE users SET name = ?, pass = ?, email = ? WHERE usersid = ?";
+		
+		try(
+			//DB接続
+            Connection con = DriverManager.getConnection(url, user, pass);
+            //SQL準備
+            PreparedStatement state = con.prepareStatement(SQL);
+        ){
+			// SQLに値をセット
+			state.setString(1, username);
+			state.setString(2, password);
+			state.setString(3, email);
+			state.setInt(4, id);
+			
+			// 更新実行
+			state.executeUpdate();
+			
+		}catch(SQLException e) {
+			e.printStackTrace();
+		}
+		
+	}
 }
 
 

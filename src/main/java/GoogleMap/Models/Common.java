@@ -1,6 +1,10 @@
-package GoogleMap.Servlet;
+package GoogleMap.Models;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -90,5 +94,37 @@ public class Common extends HttpServlet {
 			break;
 		}
 		return ageStr;
+	}
+	
+	// 年齢の計算
+	public static String calculateAge(String birthday) {
+		// フォーマッター(yyyyMMdd)
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyyMMdd");
+		// long型を「日」へ変換
+		TimeUnit DAY = TimeUnit.DAYS;
+		// 一年の日数
+		long daysOfYear = 365;
+		// 返却する年齢
+		int age = 0;
+		
+		try {
+			// 現在の日付
+			Date now = new Date();
+			// フォーマットされた現在の日付(yyyyMMdd)
+			Date nowFormatted = formatter.parse(formatter.format(now));
+			// 誕生日の日付をDate型に変換
+			Date birthdayFormatted = formatter.parse(birthday);
+			
+			// 現在の日付 - 誕生日(日数で計算)
+			long diff = DAY.convert(nowFormatted.getTime() - birthdayFormatted.getTime(), TimeUnit.MILLISECONDS);
+			
+			// diff / 一年の日数
+			age = (int) ((int)diff/daysOfYear);
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+		return Integer.toString(age);
+		
 	}
 }

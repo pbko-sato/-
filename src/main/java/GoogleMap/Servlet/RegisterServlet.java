@@ -13,6 +13,8 @@ import javax.servlet.http.HttpSession;
 
 import GoogleMap.Bean.UsersBean;
 import GoogleMap.DAO.UsersDAO;
+import GoogleMap.Models.Common;
+import GoogleMap.Models.ErrorMessage;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -79,7 +81,7 @@ public class RegisterServlet extends HttpServlet {
 					username.length() == 0 || pass.length() == 0 || passCert.length() == 0 || email.length() == 0 ||
 					Integer.parseInt(sex) == 0 || year.length() == 0 || gotMonth.length() == 0 || gotDate.length() == 0 ||
 					tmpUsersBean.getBirthday().length() != 8) {
-					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncompleteInputs);
+					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
 					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
 					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
@@ -88,7 +90,7 @@ public class RegisterServlet extends HttpServlet {
 				
 				// パスワードチェック
 				if(!pass.equals(passCert)) {
-					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerIncorrectPassword);
+					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewIncorrectPassword);
 					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
 					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
@@ -98,7 +100,7 @@ public class RegisterServlet extends HttpServlet {
 				UsersDAO usersDaoInput = new UsersDAO();
 				boolean isInitialRecordInput = usersDaoInput.checkRecords(username, email);
 				if(!isInitialRecordInput) {
-					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerFailureMessage);
+					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewFailureMessage);
 					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
 					break;
 					
@@ -112,7 +114,7 @@ public class RegisterServlet extends HttpServlet {
 				sessionGoToCert.setAttribute("sexStr", sexStr);
 				sessionGoToCert.setAttribute("birthdayStr", Common.displayBirthday(tmpUsersBean.getBirthday()));
 				
-				// 同一レコードのメッセージ削除
+				// エラーメッセージ削除
 				sessionGoToCert.removeAttribute("registerInputFailureMessage");
 				// 画面遷移
 				Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
@@ -122,7 +124,7 @@ public class RegisterServlet extends HttpServlet {
 			case "ReturnToInput":
 				// 既存のセッション取得
 				HttpSession sessionReturnToInput = request.getSession(false);
-				// 同一レコードのメッセージ削除
+				// エラーメッセージ削除
 				sessionReturnToInput.removeAttribute("registerCertFailureMessage");
 				// 画面遷移
 				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
@@ -139,7 +141,7 @@ public class RegisterServlet extends HttpServlet {
 				UsersDAO usersDao = new UsersDAO();
 				boolean isInitialRecord = usersDao.checkRecords(execUsersBean.getName(), execUsersBean.getEmail());
 				if(!isInitialRecord) {
-					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerFailureMessage);
+					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerRenewFailureMessage);
 					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 					break;
 					
@@ -149,7 +151,7 @@ public class RegisterServlet extends HttpServlet {
 				UsersBean usersBeanExec = (UsersBean)sessionExecuteRegister.getAttribute("usersBean");
 				if(usersBeanExec.getName() == null || usersBeanExec.getPass() == null || usersBeanExec.getEmail() == null ||
 					usersBeanExec.getSex() == 0 || usersBeanExec.getBirthday() == null) {
-					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerIncompleteInputs);
+					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
 					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
 					break;
 					
