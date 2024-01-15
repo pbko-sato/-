@@ -34,11 +34,11 @@
 				<table class="renew-input-table">
 					<tbody>
 						<tr class="input-table-tr">
-							<td class="input-table-td renew-table-labels">
+							<th class="input-table-th">
 								<label class="renew-label">
 									性別 :
 								</label>
-							</td>
+							</th>
 							<td class="input-table-td">
 								<div class="renew-td-sex">
 									${ sexStr }
@@ -46,11 +46,11 @@
 							</td>
 						</tr>
 						<tr class="input-table-tr">
-							<td class="input-table-td renew-table-labels">
+							<th class="input-table-th">
 								<label class="renew-label">
 									生年月日 :
 								</label>
-							</td>
+							</th>
 							<td class="input-table-td">
 								<div class="renew-td-birthday">
 									${ birthdayStr } &nbsp;(${ ageStr }歳)

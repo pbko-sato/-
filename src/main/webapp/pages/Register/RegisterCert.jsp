@@ -20,41 +20,41 @@
 		<h4 class="register-cert-message">${ registerCertFailureMessage }</h4>
 			<table class="register-cert-table">
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							ユーザ名
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ usersBean.name }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							メールアドレス						
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ usersBean.email }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							性別
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ sexStr }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							年齢
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ birthdayStr }
 					</td>

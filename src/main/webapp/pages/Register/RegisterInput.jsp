@@ -33,11 +33,11 @@
 				<table class="register-input-table">
 					<tbody>
 						<tr class="input-table-tr">
-							<td class="input-table-td register-table-labels">
+							<th class="input-table-td register-table-labels">
 								<label class="register-pulldown-label">
 									性別 :
 								</label>
-							</td>
+							</th>
 							<td class="input-table-td">
 								<div class="register-td-age">
 									<select name="sex">
@@ -50,11 +50,11 @@
 							</td>
 						</tr>
 						<tr class="input-table-tr">
-							<td class="input-table-td register-table-labels">
+							<th class="input-table-td register-table-labels">
 								<label class="register-pulldown-label">
 									生年月日 :
 								</label>
-							</td>
+							</th>
 							<td class="input-table-td">
 								<div class="register-td-birthday">
 									<div class="year-pulldown">

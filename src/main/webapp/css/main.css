@@ -23,18 +23,23 @@ h4 {
 	color: red;
 }
 
-.return-button {
-	border: 1px solid gray;
-  	border-radius: 100px;
-  	padding: 8px 10px;
-  	font-weight: bold;
-  	color: #222222;
-  	width: 10rem;
-  	background-color: #FFFFEE;
+table {
+	width: 80%;
+	border-collapse: collapse;
+	margin-left: auto;
+	margin-right: auto;
 }
 
-.return-button:hover {
-	background: linear-gradient(#F5F5F5, #F5FFFA);
+tr {
+	width: 100%;
+}
+
+th {
+	width: 50%;
+}
+
+td {
+	width: 50%;
 }
 
 input[type=text] {
@@ -63,6 +68,20 @@ input[type=email] {
   	border-radius: 8px;
   	font-size: 16px;
   	box-sizing: border-box;
+}
+
+.return-button {
+	border: 1px solid gray;
+  	border-radius: 100px;
+  	padding: 8px 10px;
+  	font-weight: bold;
+  	color: #222222;
+  	width: 10rem;
+  	background-color: #FFFFEE;
+}
+
+.return-button:hover {
+	background: linear-gradient(#F5F5F5, #F5FFFA);
 }
 
 

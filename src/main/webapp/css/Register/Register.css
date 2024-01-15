@@ -34,13 +34,11 @@ select {
 
 .register-input-table {
 	border: 0px none;
-	border-collapse: collapse;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .register-table-labels {
 	text-align: right;
+	width: 40%;
 }
 
 .register-td-age {
@@ -58,9 +56,6 @@ select {
 }
 
 .register-cert-table {
-	border-collapse: collapse;
-	margin-left: auto;
-	margin-right: auto;
 	border: solid 1px;
 }
 

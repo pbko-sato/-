@@ -21,41 +21,41 @@
 		<h4 class="renew-cert-message">${ renewCertFailureMessage }</h4>
 			<table class="renew-cert-table">
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							ユーザ名						
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ usersBean.name }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							メールアドレス						
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ usersBean.email }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							性別						
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ sexStr }
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td">
+					<th class="cert-table-td">
 						<label>
 							年齢
 						</label>
-					</td>
+					</th>
 					<td class="cert-table-td">
 						${ birthdayStr } &nbsp;(${ ageStr }歳)
 					</td>

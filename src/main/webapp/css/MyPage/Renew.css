@@ -28,8 +28,9 @@
 	margin-right: auto;
 }
 
-.renew-table-labels {
+.input-table-th {
 	text-align: right;
+	width: 40%;
 }
 
 .renew-td-sex {
