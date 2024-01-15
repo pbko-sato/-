@@ -19,7 +19,7 @@
 		<hr>
 		<h4 class="resign-message">${ resignFailureMessage }</h4>
 		<div class="resign-notion-text">
-			<h3 class="resign-h3">本当に退会しますか?</h3>
+			<h2 class="resign-h2">本当に退会しますか?</h2>
 			<ul class="resign-ul">
 				<li class="resign-li">※会員情報は削除されます。</li>
 				<li class="resign-li">※投稿は自動的には削除されません。退会後に自身の投稿を削除することはできなくなりますので、削除したい投稿は退会前に削除してください。</li>
