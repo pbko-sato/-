@@ -71,6 +71,12 @@ public class HeaderServlet extends HttpServlet {
 				// 画面遷移
 				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE); 
 				break;
+				
+			// loggerHeader.jsp 「お店をシェアする」リンク押下時
+			case "TransitToShopSearch":
+				// 画面遷移
+				Common.gotoPage(request, response, PagesAndUrls.SHOP_SEARCH); 
+				break;
 
 			// loggedHeader.jsp 「ログアウト」リンク押下時
 			case "Logout":

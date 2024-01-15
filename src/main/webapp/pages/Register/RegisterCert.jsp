@@ -20,7 +20,7 @@
 		<h4 class="register-cert-message">${ registerCertFailureMessage }</h4>
 			<table class="register-cert-table">
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							ユーザ名
 						</label>
@@ -30,7 +30,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							メールアドレス						
 						</label>
@@ -40,7 +40,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							性別
 						</label>
@@ -50,7 +50,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							年齢
 						</label>

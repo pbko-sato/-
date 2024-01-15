@@ -53,9 +53,16 @@
 	border: solid 1px;
 }
 
+.cert-table-th {
+	border: solid 1px;
+	padding: 1rem;
+	background-color: #FFFFDD;
+}
+
 .cert-table-td {
 	border: solid 1px;
 	padding: 1rem;
+	background-color: #FFFFEE;
 }
 
 .renew-button {

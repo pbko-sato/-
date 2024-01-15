@@ -21,7 +21,7 @@
 		<h4 class="renew-cert-message">${ renewCertFailureMessage }</h4>
 			<table class="renew-cert-table">
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							ユーザ名						
 						</label>
@@ -31,7 +31,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							メールアドレス						
 						</label>
@@ -41,7 +41,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							性別						
 						</label>
@@ -51,7 +51,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<th class="cert-table-td">
+					<th class="cert-table-th">
 						<label>
 							年齢
 						</label>

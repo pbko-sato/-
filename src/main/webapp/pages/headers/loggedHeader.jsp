@@ -8,7 +8,7 @@
 		<ul class="header-ul">
 			<li class="header-li"><a class="header-link" href="/GoogleMap/HeaderServlet?action=TransitToMyPage">マイページ</a></li>
 			<li class="header-li"><a class="header-link" href="">お店を探す</a></li>
-			<li class="header-li"><a class="header-link" href="">お店をシェアする</a></li>
+			<li class="header-li"><a class="header-link" href="/GoogleMap/HeaderServlet?action=TransitToShopSearch">お店をシェアする</a></li>
 			<li class="header-li"><a class="header-link" href="/GoogleMap/HeaderServlet?action=Logout">ログアウト</a></li>
 		</ul>
 	</nav>

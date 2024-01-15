@@ -18,6 +18,12 @@ public class PagesAndUrls {
 	public static String RENEW_CERT = "/pages/MyPage/Renew/RenewCert.jsp";
 	// 退会確認
 	public static String RESIGN_CERT = "/pages/MyPage/Resign/ResignCert.jsp";
+	// 投稿検索
+	public static String SHOP_SEARCH = "/pages/Share/ShopSearch/ShopSearch.jsp";
+	// 投稿エリア検索
+	public static String SHOP_AREA_SEARCH = "/pages/Share/ShopSearch/ShopAreaSearch.jsp";
+	// 投稿検索結果確認
+	public static String SHOR_SEARCH_RESULTS = "/pages/Share/ShopSearch/ShopSearchResults.jsp";
 	// エラー
 	public static String ERROR = "/pages/Error.jsp";
 	
