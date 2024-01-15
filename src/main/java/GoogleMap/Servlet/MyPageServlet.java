@@ -16,6 +16,7 @@ import GoogleMap.Bean.UsersBean;
 import GoogleMap.DAO.UsersDAO;
 import GoogleMap.Models.Common;
 import GoogleMap.Models.ErrorMessage;
+import GoogleMap.Models.PagesAndUrls;
 
 /**
  * Servlet implementation class MyPageServlet
@@ -58,13 +59,13 @@ public class MyPageServlet extends HttpServlet {
 				sessionRenewInput.setAttribute("ageStr", Common.calculateAge(usersBeanRenewInput.getBirthday()));
 				
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewInput.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.RENEW_INPUT);
 				break;
 				
 			// MyPage.jsp 「退会」リンク押下時
 			case "TransitToResignCert":
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/Resign/ResignCert.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.RESIGN_CERT);
 				break;
 				
 			// RenewInput.jsp 「マイページへ」ボタン押下時
@@ -80,7 +81,7 @@ public class MyPageServlet extends HttpServlet {
 				sessionReturnToMyPage.removeAttribute("ageStr");
 				sessionReturnToMyPage.removeAttribute("resignFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/MyPage.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE);
 				break;
 				
 			// RenewInput.jsp 「確認する」ボタン押下時
@@ -102,7 +103,7 @@ public class MyPageServlet extends HttpServlet {
 					username.length() == 0 || pass.length() == 0 || passCert.length() == 0 || email.length() == 0) {
 					sessionGoToCert.setAttribute("renewInputFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
 					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
-					Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RENEW_INPUT);
 					break;
 					
 				}
@@ -111,7 +112,7 @@ public class MyPageServlet extends HttpServlet {
 				if(!pass.equals(passCert)) {
 					sessionGoToCert.setAttribute("renewInputFailureMessage", ErrorMessage.registerRenewIncorrectPassword);
 					sessionGoToCert.setAttribute("userBean", tmpUsersBean);
-					Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RENEW_INPUT);
 					break;
 					
 				}
@@ -122,7 +123,7 @@ public class MyPageServlet extends HttpServlet {
 				boolean isInitialRecordInput = usersDaoInput.checkRecordsForRenew(infoInput.getUsersid(), username, email);
 				if(!isInitialRecordInput) {
 					sessionGoToCert.setAttribute("renewInputFailureMessage", ErrorMessage.registerRenewFailureMessage);
-					Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RENEW_INPUT);
 					break;
 					
 				}
@@ -132,7 +133,7 @@ public class MyPageServlet extends HttpServlet {
 				// エラーメッセージ削除
 				sessionGoToCert.removeAttribute("renewInputFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewCert.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.RENEW_CERT);
 				break;
 				
 			// RenewCert.jsp 「戻る」ボタン押下時
@@ -142,7 +143,7 @@ public class MyPageServlet extends HttpServlet {
 				// エラーメッセージ削除
 				sessionReturnToInput.removeAttribute("renewCertFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewInput.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.RENEW_INPUT);
 				break;
 				
 			// RenewCert.sjsp 「更新する」ボタン押下時
@@ -159,7 +160,7 @@ public class MyPageServlet extends HttpServlet {
 					execUsersBean.getName().length() == 0 || execUsersBean.getPass().length() == 0 || execUsersBean.getEmail().length() == 0 ||
 					sexStr.length() == 0 || birthdayStr.length() == 0) {
 					sessionExecuteRenew.setAttribute("renewCertFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
-					Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewCert.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RENEW_CERT);
 					break;
 					
 				}
@@ -170,7 +171,7 @@ public class MyPageServlet extends HttpServlet {
 				boolean isInitialRecordCert = usersDaoCert.checkRecordsForRenew(infoCert.getUsersid(), execUsersBean.getName(), execUsersBean.getEmail());
 				if(!isInitialRecordCert) {
 					sessionExecuteRenew.setAttribute("renewCertFailureMessage", ErrorMessage.registerRenewFailureMessage);
-					Common.gotoPage(request, response, "/pages/MyPage/Renew/RenewCert.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RENEW_CERT);
 					break;
 					
 				}
@@ -183,7 +184,7 @@ public class MyPageServlet extends HttpServlet {
 					password = String.format("%040x", new BigInteger(1, result));
 					
 				} catch (Exception e){
-					Common.gotoPage(request, response, "/pages/Error.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.ERROR);
 					
 				}
 				// パスワードをUsersBeanセット
@@ -203,7 +204,7 @@ public class MyPageServlet extends HttpServlet {
 				infoCert.setName(execUsersBean.getName());
 				
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/MyPage/MyPage.jsp");		
+				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE);		
 				break;
 				
 			// ResignCert.jsp 「退会する」ボタン押下時
@@ -215,7 +216,7 @@ public class MyPageServlet extends HttpServlet {
 				String agree = request.getParameter("resign-agreement");
 				if (agree == null || agree.length() == 0) {
 					sessionResign.setAttribute("resignFailureMessage", ErrorMessage.resignCheckboxUnchecked);
-					Common.gotoPage(request, response, "/pages/MyPage/Resign/ResignCert.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.RESIGN_CERT);
 					break;
 					
 				}
@@ -227,7 +228,7 @@ public class MyPageServlet extends HttpServlet {
 				// セッション削除
 				sessionResign.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.TOP);
 				break;
 				
 			default:
@@ -236,6 +237,7 @@ public class MyPageServlet extends HttpServlet {
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Common.gotoPage(request, response, PagesAndUrls.ERROR);
 		}
 	}
 

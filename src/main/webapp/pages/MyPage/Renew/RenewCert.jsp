@@ -17,7 +17,7 @@
 			<h2>会員情報更新 確認</h2>
 		</div>
 		<hr>
-		<div>
+		<div class="table-for-renew-cert">
 		<h4 class="renew-cert-message">${ renewCertFailureMessage }</h4>
 			<table class="renew-cert-table">
 				<tr class="cert-table-tr">

@@ -16,7 +16,7 @@
 			<h2>新規登録 確認</h2>
 		</div>
 		<hr>
-		<div>
+		<div class="table-for-register-cert">
 		<h4 class="register-cert-message">${ registerCertFailureMessage }</h4>
 			<table class="register-cert-table">
 				<tr class="cert-table-tr">
@@ -50,7 +50,7 @@
 					</td>
 				</tr>
 				<tr class="cert-table-tr">
-					<td class="cert-table-td register-table-labels">
+					<td class="cert-table-td">
 						<label>
 							年齢
 						</label>

@@ -13,3 +13,7 @@
 .login-button:hover{
   	background: linear-gradient(#FFCC99, #FFCC66);	
 }
+
+.input-for-password {
+	margin-bottom: 10px;
+}

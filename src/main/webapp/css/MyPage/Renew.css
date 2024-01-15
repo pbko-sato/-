@@ -70,3 +70,7 @@
 .renew-button:hover {
 	background: linear-gradient(#99CC99, #66CC99);
 }
+
+.table-for-renew-cert {
+	margin-bottom: 10px;
+}

@@ -90,3 +90,7 @@ select {
 .register-button:hover {
 	background: linear-gradient(#BAD3FF, #8EB8FF);
 }
+
+.table-for-register-cert {
+	margin-bottom: 10px;
+}

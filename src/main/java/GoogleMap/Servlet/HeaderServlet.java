@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import GoogleMap.Models.Common;
+import GoogleMap.Models.PagesAndUrls;
 
 /**
  * Servlet implementation class HeaderServlet
@@ -37,7 +38,7 @@ public class HeaderServlet extends HttpServlet {
 			// header.jsp/loggedHeader.jsp 「社内食べログ」リンク押下時
 			case "TransitToTop":
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.TOP);
 				break;
 			
 			// header.jsp 「ログイン」リンク押下時
@@ -47,7 +48,7 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToLogin.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Login/Login.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.LOGIN);
 				break;
 				
 			// header.jsp 「新規登録」リンク押下時
@@ -57,13 +58,13 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToRegister.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
 				break;
 				
 			// loggerHeader.jsp 「マイページ」リンク押下時
 			case "TransitToMyPage":
 				// 画面遷移
-				Common.gotoPage(request, response, "pages/MyPage/MyPage.jsp"); 
+				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE); 
 				break;
 
 			// loggedHeader.jsp 「ログアウト」リンク押下時
@@ -73,7 +74,7 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionLogout.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.TOP);
 				break;
 				
 				
@@ -82,7 +83,7 @@ public class HeaderServlet extends HttpServlet {
 			}
 			
 		} catch(Exception e) {
-			Common.gotoPage(request, response, "/pages/Error.jsp");
+			Common.gotoPage(request, response, PagesAndUrls.ERROR);
 		}
 	}
 

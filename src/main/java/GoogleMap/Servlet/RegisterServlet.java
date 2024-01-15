@@ -15,6 +15,7 @@ import GoogleMap.Bean.UsersBean;
 import GoogleMap.DAO.UsersDAO;
 import GoogleMap.Models.Common;
 import GoogleMap.Models.ErrorMessage;
+import GoogleMap.Models.PagesAndUrls;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -54,7 +55,7 @@ public class RegisterServlet extends HttpServlet {
 				// セッション削除
 				sessionReturnToTop.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE);
 				break;
 				
 			// RegisterInput.jsp 「確認する」ボタン押下時
@@ -83,7 +84,7 @@ public class RegisterServlet extends HttpServlet {
 					tmpUsersBean.getBirthday().length() != 8) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
 					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
-					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
 					break;
 					
 				}
@@ -92,7 +93,7 @@ public class RegisterServlet extends HttpServlet {
 				if(!pass.equals(passCert)) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewIncorrectPassword);
 					sessionGoToCert.setAttribute("usersBean", tmpUsersBean);
-					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
 					break;
 				}
 				
@@ -101,7 +102,7 @@ public class RegisterServlet extends HttpServlet {
 				boolean isInitialRecordInput = usersDaoInput.checkRecords(username, email);
 				if(!isInitialRecordInput) {
 					sessionGoToCert.setAttribute("registerInputFailureMessage", ErrorMessage.registerRenewFailureMessage);
-					Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
 					break;
 					
 				}
@@ -117,7 +118,7 @@ public class RegisterServlet extends HttpServlet {
 				// エラーメッセージ削除
 				sessionGoToCert.removeAttribute("registerInputFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.REGISTER_CERT);
 				break;
 			
 			// RegisterCert.jsp 「戻る」ボタン押下時
@@ -127,7 +128,7 @@ public class RegisterServlet extends HttpServlet {
 				// エラーメッセージ削除
 				sessionReturnToInput.removeAttribute("registerCertFailureMessage");
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Register/RegisterInput.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
 				break;
 				
 			// RegisterCert.jsp 「登録する」ボタン押下時
@@ -142,7 +143,7 @@ public class RegisterServlet extends HttpServlet {
 				boolean isInitialRecord = usersDao.checkRecords(execUsersBean.getName(), execUsersBean.getEmail());
 				if(!isInitialRecord) {
 					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerRenewFailureMessage);
-					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.REGISTER_CERT);
 					break;
 					
 				}
@@ -152,7 +153,7 @@ public class RegisterServlet extends HttpServlet {
 				if(usersBeanExec.getName() == null || usersBeanExec.getPass() == null || usersBeanExec.getEmail() == null ||
 					usersBeanExec.getSex() == 0 || usersBeanExec.getBirthday() == null) {
 					sessionExecuteRegister.setAttribute("registerCertFailureMessage", ErrorMessage.registerRenewIncompleteInputs);
-					Common.gotoPage(request, response, "/pages/Register/RegisterCert.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.REGISTER_CERT);
 					break;
 					
 				}
@@ -165,7 +166,7 @@ public class RegisterServlet extends HttpServlet {
 					password = String.format("%040x", new BigInteger(1, result));
 					
 				} catch (Exception e){
-					Common.gotoPage(request, response, "/pages/Error.jsp");
+					Common.gotoPage(request, response, PagesAndUrls.ERROR);
 					
 				}
 				
@@ -181,11 +182,12 @@ public class RegisterServlet extends HttpServlet {
 				sessionExecuteRegister.setAttribute("loginInfo", usersDao.getRegisteredLoginInfo());
 				
 				// 画面遷移
-				Common.gotoPage(request, response, "/pages/Top/Top.jsp");
+				Common.gotoPage(request, response, PagesAndUrls.TOP);
 				
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
+			Common.gotoPage(request, response, PagesAndUrls.ERROR);
 		}
 	}
 
