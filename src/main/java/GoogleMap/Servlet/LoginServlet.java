@@ -43,6 +43,11 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// リクエストパラメータの文字コードを指定
+		request.setCharacterEncoding("UTF-8");
+		// 送信するレスポンスパラメータの文字コードを指定
+		response.setContentType("text/html;charset=UTF-8");
+
 		// actionによる処理分岐
 		try {
 			String action = request.getParameter("action");

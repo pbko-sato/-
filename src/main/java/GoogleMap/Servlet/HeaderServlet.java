@@ -31,6 +31,11 @@ public class HeaderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		// リクエストパラメータの文字コードを指定
+		request.setCharacterEncoding("UTF-8");
+		// 送信するレスポンスパラメータの文字コードを指定
+		response.setContentType("text/html;charset=UTF-8");
+
 		try {
 			String action = request.getParameter("action");
 			
