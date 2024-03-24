@@ -12,14 +12,29 @@ GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO kouki;
 himitu
 
 CREATE TABLE users (
-	id SERIAL,
+	usersid SERIAL,
 	name TEXT,
 	pass TEXT,
 	email TEXT,
 	sex INTEGER,
-	age INTEGER
+	birthday TEXT
+);
+
+CREATE TABLE posts (
+	postid SERIAL,
+	userid INTEGER,
+	shopid TEXT,
+	postdate TEXT,
+	shopname TEXT,
+	lat TEXT,
+	lng TEXT,
+	comment TEXT,
+	recscene INTEGER,
+	url TEXT,
+	evaluate INTEGER,
+	goods INTEGER
 );
 
 GRANT ALL ON users TO kouki;
-INSERT INTO users(name, pass, email, sex, age) VALUES('koki', '9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684', 'koki@gmail.com', 1, 20);
+INSERT INTO users(name, pass, email, sex, birthday) VALUES('koki', '9d4e1e23bd5b727046a9e3b4b7db57bd8d6ee684', 'koki@gmail.com', 1, 20000413);
 \q
