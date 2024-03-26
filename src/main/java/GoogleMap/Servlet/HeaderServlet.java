@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import GoogleMap.Models.Common;
-import GoogleMap.Models.PagesAndUrls;
+import GoogleMap.Models.Pages;
 
 /**
  * Servlet implementation class HeaderServlet
@@ -43,7 +43,7 @@ public class HeaderServlet extends HttpServlet {
 			// header.jsp/loggedHeader.jsp 「社内食べログ」リンク押下時
 			case "TransitToTop":
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.TOP);
+				Common.gotoPage(request, response, Pages.TOP);
 				break;
 			
 			// header.jsp 「ログイン」リンク押下時
@@ -53,7 +53,7 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToLogin.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.LOGIN);
+				Common.gotoPage(request, response, Pages.LOGIN);
 				break;
 				
 			// header.jsp 「新規登録」リンク押下時
@@ -63,19 +63,19 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionTransitToRegister.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
+				Common.gotoPage(request, response, Pages.REGISTER_INPUT);
 				break;
 				
 			// loggerHeader.jsp 「マイページ」リンク押下時
 			case "TransitToMyPage":
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.MY_PAGE); 
+				Common.gotoPage(request, response, Pages.MY_PAGE); 
 				break;
 				
 			// loggerHeader.jsp 「お店をシェアする」リンク押下時
 			case "TransitToShopSearch":
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.SHOP_SEARCH); 
+				Common.gotoPage(request, response, Pages.SHOP_SEARCH); 
 				break;
 
 			// loggedHeader.jsp 「ログアウト」リンク押下時
@@ -85,7 +85,7 @@ public class HeaderServlet extends HttpServlet {
 				// セッション削除
 				sessionLogout.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.TOP);
+				Common.gotoPage(request, response, Pages.TOP);
 				break;
 				
 				
@@ -94,7 +94,7 @@ public class HeaderServlet extends HttpServlet {
 			}
 			
 		} catch(Exception e) {
-			Common.gotoPage(request, response, PagesAndUrls.ERROR);
+			Common.gotoPage(request, response, Pages.ERROR);
 		}
 	}
 

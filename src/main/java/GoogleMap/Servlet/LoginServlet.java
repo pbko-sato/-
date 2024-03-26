@@ -15,7 +15,7 @@ import GoogleMap.Bean.LoginInfo;
 import GoogleMap.DAO.UsersDAO;
 import GoogleMap.Models.Common;
 import GoogleMap.Models.ErrorMessage;
-import GoogleMap.Models.PagesAndUrls;
+import GoogleMap.Models.Pages;
 
 /**
  * Servlet implementation class LoginServlet
@@ -60,7 +60,7 @@ public class LoginServlet extends HttpServlet {
 				// セッション削除
 				sessionReturnToTop.invalidate();
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.TOP);
+				Common.gotoPage(request, response, Pages.TOP);
 				break;
 				
 				
@@ -77,7 +77,7 @@ public class LoginServlet extends HttpServlet {
 					
 				} catch (Exception e){
 					e.printStackTrace();
-					Common.gotoPage(request, response, PagesAndUrls.ERROR);
+					Common.gotoPage(request, response, Pages.ERROR);
 					
 				}
 				
@@ -93,19 +93,19 @@ public class LoginServlet extends HttpServlet {
 					sessionLogin.removeAttribute("loginFailureMessage");
 					// セッションにログイン情報付加
 					sessionLogin.setAttribute("loginInfo", loginInfo);
-					Common.gotoPage(request, response, PagesAndUrls.TOP);
+					Common.gotoPage(request, response, Pages.TOP);
 				
 				// ログイン失敗時
 				} else {
 					sessionLogin.setAttribute("loginFailureMessage", ErrorMessage.loginFailureMessage);
-					Common.gotoPage(request, response, PagesAndUrls.LOGIN);
+					Common.gotoPage(request, response, Pages.LOGIN);
 				}
 				break;
 				
 			// Login.jsp 「こちら」リンク押下時
 			case "TransitToRegister":
 				// 画面遷移
-				Common.gotoPage(request, response, PagesAndUrls.REGISTER_INPUT);
+				Common.gotoPage(request, response, Pages.REGISTER_INPUT);
 				break;
 
 			default:
@@ -113,7 +113,7 @@ public class LoginServlet extends HttpServlet {
 			}
 			
 		} catch (Exception e) {
-			Common.gotoPage(request, response, PagesAndUrls.ERROR);
+			Common.gotoPage(request, response, Pages.ERROR);
 		}
 		
 	}

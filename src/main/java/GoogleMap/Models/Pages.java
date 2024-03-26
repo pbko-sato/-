@@ -1,6 +1,6 @@
 package GoogleMap.Models;
 
-public class PagesAndUrls {
+public class Pages {
 	// ページURL
 	// TOP
 	public static String TOP = "/pages/Top/Top.jsp";
@@ -26,14 +26,4 @@ public class PagesAndUrls {
 	public static String SHOR_SEARCH_RESULTS = "/pages/Share/ShopSearch/ShopSearchResults.jsp";
 	// エラー
 	public static String ERROR = "/pages/Error.jsp";
-	
-	
-	// HotPepperAPIのURL
-	// グルメサーチAPI
-		// key : APIキー
-		// format : json/xml
-		// count : 最大出力件数
-		// order : ソート順 1→店名かな順
-		// type : 出力タイプ lite→主要項目のみ出力
-	public static String API_FOR_SHOP_SEARCH = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/?key=b8974cdcc1dc81b4&format=json&count=50&order=1&type=lite";
 }
