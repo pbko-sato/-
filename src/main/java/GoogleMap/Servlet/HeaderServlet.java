@@ -40,57 +40,57 @@ public class HeaderServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			
 			switch(action) {
-			// header.jsp/loggedHeader.jsp 「社内食べログ」リンク押下時
-			case "TransitToTop":
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.TOP);
-				break;
-			
-			// header.jsp 「ログイン」リンク押下時
-			case "TransitToLogin":
-				// 既存のセッション取得
-				HttpSession sessionTransitToLogin = request.getSession(false);
-				// セッション削除
-				sessionTransitToLogin.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.LOGIN);
-				break;
+				// header.jsp/loggedHeader.jsp 「社内食べログ」リンク押下時
+				case "TransitToTop":
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.TOP);
+					break;
 				
-			// header.jsp 「新規登録」リンク押下時
-			case "TransitToRegister":
-				// 既存のセッション取得
-				HttpSession sessionTransitToRegister = request.getSession(false);
-				// セッション削除
-				sessionTransitToRegister.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.REGISTER_INPUT);
-				break;
-				
-			// loggerHeader.jsp 「マイページ」リンク押下時
-			case "TransitToMyPage":
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.MY_PAGE); 
-				break;
-				
-			// loggerHeader.jsp 「お店をシェアする」リンク押下時
-			case "TransitToShopSearch":
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.SHOP_SEARCH); 
-				break;
-
-			// loggedHeader.jsp 「ログアウト」リンク押下時
-			case "Logout":
-				// 既存のセッション取得
-				HttpSession sessionLogout = request.getSession(false);
-				// セッション削除
-				sessionLogout.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.TOP);
-				break;
-				
-				
-			default:
-				break;
+				// header.jsp 「ログイン」リンク押下時
+				case "TransitToLogin":
+					// 既存のセッション取得
+					HttpSession sessionTransitToLogin = request.getSession(false);
+					// セッション削除
+					sessionTransitToLogin.invalidate();
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.LOGIN);
+					break;
+					
+				// header.jsp 「新規登録」リンク押下時
+				case "TransitToRegister":
+					// 既存のセッション取得
+					HttpSession sessionTransitToRegister = request.getSession(false);
+					// セッション削除
+					sessionTransitToRegister.invalidate();
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.REGISTER_INPUT);
+					break;
+					
+				// loggerHeader.jsp 「マイページ」リンク押下時
+				case "TransitToMyPage":
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.MY_PAGE); 
+					break;
+					
+				// loggerHeader.jsp 「お店をシェアする」リンク押下時
+				case "TransitToShopSearch":
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.SHOP_SEARCH); 
+					break;
+	
+				// loggedHeader.jsp 「ログアウト」リンク押下時
+				case "Logout":
+					// 既存のセッション取得
+					HttpSession sessionLogout = request.getSession(false);
+					// セッション削除
+					sessionLogout.invalidate();
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.TOP);
+					break;
+					
+					
+				default:
+					break;
 			}
 			
 		} catch(Exception e) {

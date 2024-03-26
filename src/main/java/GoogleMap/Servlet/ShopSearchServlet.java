@@ -1,12 +1,14 @@
 package GoogleMap.Servlet;
 
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import GoogleMap.Models.Common;
 import GoogleMap.Models.Pages;
@@ -46,17 +48,30 @@ public class ShopSearchServlet extends HttpServlet {
 	
 				// ShopSearch.jsp 「結果を確認する」ボタン押下時
 				case "GoToResult":
+					// 既存のセッション取得
+					HttpSession sessionGoToResult = request.getSession(false);
+
 					// パラメータ取得
+					String keyword = request.getParameter("keyword");
+					String nameAny = request.getParameter("name_any");
+					String address = request.getParameter("address");
+					String tel = request.getParameter("tel");
 					String genre = request.getParameter("genre");
 					
 					// fetchOptionにセット、query作成
 					GourmetSearchFetchOption option = new GourmetSearchFetchOption();
+					option.setKeyword(keyword);
+					option.setNameAny(nameAny);
+					option.setAddress(address);
+					option.setTel(tel);
 					option.setGenre(genre);
 					
-					GourmetSearchApiModel.fetchGourmetSearch(option.makeQuery());
+					// セッションに検索結果をセット
+					sessionGoToResult.setAttribute("gourmetSearchApiBeanList", GourmetSearchApiModel.fetchGourmetSearch(option.makeQuery()));
 					
 					// 画面遷移
-					Common.gotoPage(request, response, Pages.SHOR_SEARCH_RESULTS);
+					TimeUnit.SECONDS.sleep(1);
+					Common.gotoPage(request, response, Pages.SHOP_SEARCH_RESULTS);
 					
 					// fetchOptionを削除する
 					option = null;
@@ -68,13 +83,6 @@ public class ShopSearchServlet extends HttpServlet {
 				case "TransitToArea":
 					// 画面遷移
 					Common.gotoPage(request, response, Pages.SHOP_AREA_SEARCH);
-					break;
-					
-	
-				// ShopAreaSearch.jsp 「投稿検索へ戻る」ボタン押下時
-				case "ReturnToShopSearch":
-					// 画面遷移
-					Common.gotoPage(request, response, Pages.SHOP_SEARCH);
 					break;
 	
 					
@@ -112,6 +120,12 @@ public class ShopSearchServlet extends HttpServlet {
 				case "clearArea3":
 					// 画面遷移
 					Common.gotoPage(request, response, Pages.SHOP_AREA_SEARCH);
+					break;
+					
+				// ShopSearchResults.jsp 「検索条件を修正する」ボタン押下時
+				case "ReturnToShopSearch":
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.SHOP_SEARCH);
 					break;
 				
 				default:

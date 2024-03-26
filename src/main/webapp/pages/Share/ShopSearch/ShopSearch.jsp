@@ -108,7 +108,6 @@
 							</div>
 						</th>
 						<td>
-							
 							<input type="hidden" name="large-area" value=""> 
 							<input type="hidden" name="middle-area" value=""> 
 							<input type="hidden" name="small-area" value=""> 

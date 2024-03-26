@@ -23,7 +23,7 @@ public class Pages {
 	// 投稿エリア検索
 	public static String SHOP_AREA_SEARCH = "/pages/Share/ShopSearch/ShopAreaSearch.jsp";
 	// 投稿検索結果確認
-	public static String SHOR_SEARCH_RESULTS = "/pages/Share/ShopSearch/ShopSearchResults.jsp";
+	public static String SHOP_SEARCH_RESULTS = "/pages/Share/ShopSearch/ShopSearchResults.jsp";
 	// エラー
 	public static String ERROR = "/pages/Error.jsp";
 }

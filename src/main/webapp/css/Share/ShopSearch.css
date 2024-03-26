@@ -83,3 +83,54 @@ select {
 .shop-area-search-li {
 	font-size: 14px;
 }
+
+.shop-search-results-ul {
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	flex-wrap: wrap;
+}
+
+.shop-search-results-empty {
+	margin: 0 auto;
+	width: 70%;
+}
+
+.shop-search-results-list {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	margin-top: 15px;
+
+	&:first-of-type {
+		margin-top: 5px;
+	}
+}
+
+.list-shop-name {
+	width: 100%;
+}
+
+.shop-info-box {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+}
+
+.shop-photo {
+	width: 30%;
+}
+
+.shop-info-table {
+	width: 70%;
+	font-size: 10px;
+}
+
+.shop-results-th {
+	width: 80px;
+}
+
+.shop-search-results-table-p {
+	margin: 0;
+}

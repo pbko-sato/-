@@ -53,63 +53,63 @@ public class LoginServlet extends HttpServlet {
 			String action = request.getParameter("action");
 			
 			switch(action) {
-			// Login.jsp 「TOPへ」ボタン押下時
-			case "returnToTop":
-				// 既存のセッション取得
-				HttpSession sessionReturnToTop = request.getSession(false);
-				// セッション削除
-				sessionReturnToTop.invalidate();
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.TOP);
-				break;
-				
-				
-			// Login.jsp 「ログインする」ボタン押下時
-			case "Login":
-				String username = request.getParameter("username");
-				String password = request.getParameter("password");
-				
-				//ハッシュ化
-				try {
-					MessageDigest digest = MessageDigest.getInstance("SHA-1");
-					byte[] result = digest.digest(password.getBytes());
-					password = String.format("%040x", new BigInteger(1, result));
-					
-				} catch (Exception e){
-					e.printStackTrace();
-					Common.gotoPage(request, response, Pages.ERROR);
-					
-				}
-				
-				// koki, passでログイン
-				System.out.print(password);
-				// 既存のセッション取得
-				HttpSession sessionLogin = request.getSession(false);
-				UsersDAO usersDao = new UsersDAO();
-				LoginInfo loginInfo = usersDao.loginAndGetLoginInfo(username, password);
-				
-				// ログイン成功時
-				if(loginInfo.isLogin()) {
-					sessionLogin.removeAttribute("loginFailureMessage");
-					// セッションにログイン情報付加
-					sessionLogin.setAttribute("loginInfo", loginInfo);
+				// Login.jsp 「TOPへ」ボタン押下時
+				case "returnToTop":
+					// 既存のセッション取得
+					HttpSession sessionReturnToTop = request.getSession(false);
+					// セッション削除
+					sessionReturnToTop.invalidate();
+					// 画面遷移
 					Common.gotoPage(request, response, Pages.TOP);
-				
-				// ログイン失敗時
-				} else {
-					sessionLogin.setAttribute("loginFailureMessage", ErrorMessage.loginFailureMessage);
-					Common.gotoPage(request, response, Pages.LOGIN);
-				}
-				break;
-				
-			// Login.jsp 「こちら」リンク押下時
-			case "TransitToRegister":
-				// 画面遷移
-				Common.gotoPage(request, response, Pages.REGISTER_INPUT);
-				break;
-
-			default:
-				break;
+					break;
+					
+					
+				// Login.jsp 「ログインする」ボタン押下時
+				case "Login":
+					String username = request.getParameter("username");
+					String password = request.getParameter("password");
+					
+					//ハッシュ化
+					try {
+						MessageDigest digest = MessageDigest.getInstance("SHA-1");
+						byte[] result = digest.digest(password.getBytes());
+						password = String.format("%040x", new BigInteger(1, result));
+						
+					} catch (Exception e){
+						e.printStackTrace();
+						Common.gotoPage(request, response, Pages.ERROR);
+						
+					}
+					
+					// koki, passでログイン
+					System.out.print(password);
+					// 既存のセッション取得
+					HttpSession sessionLogin = request.getSession(false);
+					UsersDAO usersDao = new UsersDAO();
+					LoginInfo loginInfo = usersDao.loginAndGetLoginInfo(username, password);
+					
+					// ログイン成功時
+					if(loginInfo.isLogin()) {
+						sessionLogin.removeAttribute("loginFailureMessage");
+						// セッションにログイン情報付加
+						sessionLogin.setAttribute("loginInfo", loginInfo);
+						Common.gotoPage(request, response, Pages.TOP);
+					
+					// ログイン失敗時
+					} else {
+						sessionLogin.setAttribute("loginFailureMessage", ErrorMessage.loginFailureMessage);
+						Common.gotoPage(request, response, Pages.LOGIN);
+					}
+					break;
+					
+				// Login.jsp 「こちら」リンク押下時
+				case "TransitToRegister":
+					// 画面遷移
+					Common.gotoPage(request, response, Pages.REGISTER_INPUT);
+					break;
+	
+				default:
+					break;
 			}
 			
 		} catch (Exception e) {
